@@ -175,7 +175,6 @@ function if1() {
         document.getElementById("answer").innerHTML = display;
     }
 }
-
 function if0() {
       if (opchecker == false) {
         console.log
@@ -311,13 +310,19 @@ function ifequal() {
     var inner = parseFloat(display);
     newfirst = parseFloat(first);
     second = inner;
+    var zerocheck = 1;
 
     newsecond = parseFloat(second);
     console.log('new first' + newfirst);
     console.log('new second' + newsecond);
     console.log('my op' + myop);
+    
 
+    if (myop == 0) { 
+        var returnv=newsecond;
+        opchecker = false;    
 
+    }
     if (myop == 1) {
         if (newfirst && newsecond) {
             var returnv=newfirst + newsecond;
@@ -344,16 +349,18 @@ function ifequal() {
     }
      if (myop == 4) {
         if (newfirst && newsecond) {
-            if (newsecond == 0) {
-                returnv = 'NAN'
-            }
-            else {
+            
+           
                 var returnv=newfirst / newsecond;
 
-            }
+            
         }
         else if (newfirst) {
-            if (newfirst == 0) {
+            if (newsecond == 0) {
+                zerocheck = 0;
+            }
+            
+            else if (newfirst == 0) {
                 returnv = 'NAN'
             }
             else {
@@ -361,8 +368,16 @@ function ifequal() {
         }
     }
      }
-        document.getElementById("answer").innerHTML = returnv;
-        display=returnv;
+    console.log("error check " + zerocheck);
+        if (zerocheck == 0) {
+            document.getElementById("answer").innerHTML = 'Not a Number';
+            display=0;
+
+        }
+        else if (zerocheck == 1) {
+            document.getElementById("answer").innerHTML = returnv;
+            display=returnv;
+        }
         first = '';
         second = '';
          
