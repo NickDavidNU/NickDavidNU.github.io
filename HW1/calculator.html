@@ -3,12 +3,16 @@
 <head>
 	<title>Calculator</title>
 	<link rel="stylesheet" href="calculator.css" type="text/css"> 
+    <script type="text/javascript" src="calc.js"></script>
+
 </head>
 <body>
 <h1> Assignment #2: Calculator </h1>
     by Nick David <br> 
 <div id="calc-back"> 
-<div id="answer"> 0 </div>
+<div id="answer"> 
+<div id="theop"> </div>
+    </div>
 <div>
     <button id="mc">MC </button>
       <button id="mplus">M+ </button>
@@ -19,26 +23,26 @@
     <div>
     <button id="C" onclick="cleared()">C </button>
       <button id="plusminus" onclick="ifneg()">&plusmn; </button>
-    <button id="Divide">&#247;  </button>
-    <button id="Times">&#215; </button>
+    <button id="Divide" onclick="ifdivide()">&#247;  </button>
+    <button id="Times" onclick="ifmult()">&#215; </button>
     
     </div>
     <div>
     <button id="7" onclick="if7()">7 </button>
       <button id="8" onclick="if8()">8 </button>
     <button id="9" onclick="if9()">9  </button>
-    <button id="-">- </button>
+    <button id="-" onclick="ifsubt()">- </button>
     
     </div>
      <div>
     <button id="4" onclick="if4()">4 </button>
       <button id="5" onclick="if5()">5 </button>
     <button id="6" onclick="if6()">6  </button>
-    <button id="+">+ </button>
+    <button id="+" onclick="ifadd()">+ </button>
     
     </div>
     
-      <button id="button-tall">=</button>
+      <button id="button-tall" onclick="ifequal()">=</button>
 
      <div>
     <button id="1" onclick="if1()">1 </button>

@@ -36,6 +36,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dadada', end
   
 
 }
+#theop {
+  width: 366px;
+  height: 93px;
+      text-align: right;
+     padding: -4px;
+    font-size: 20px;
+      font-family: sans-serif;
+    margin-bottom: 3%
+
+
+
+
+}
 button {
 	width: 92px;
 	height: 54px;
