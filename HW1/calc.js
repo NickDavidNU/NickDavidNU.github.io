@@ -1,16 +1,16 @@
-var display = '';
+var display = '0';
 //var decimalAdded = false; retired
 var negative = 0;
 var theop = '';
 var first = '';
 var second = '';
 var myop = 0;
-var opchecker = false;
+var opchecker = true;
 
 
 
 function cleared() {
-    display = 0;
+    display = '0';
     decimalAdded = 0;
     negative = 0;
     theop = 0;
@@ -20,14 +20,14 @@ function cleared() {
 }
 function if9() {
     if (opchecker == false) {
-        console.log
         document.getElementById("answer").innerHTML = '0';
         display='0';
     }
     opchecker = true;
 
     var inner = parseFloat(display);
-    if (inner == 0) {
+    console.log(display);
+    if (inner == 0 && display.indexOf('.')<0) {
         document.getElementById("answer").innerHTML = '9';
         display='9';
     }
@@ -44,7 +44,7 @@ function if8() {
     }
     opchecker = true;
     var inner = parseFloat(display);
-    if (inner == 0) {
+    if (inner == 0 && display.indexOf('.')<0) {
         document.getElementById("answer").innerHTML = '8';
         display='8';
     }
@@ -61,7 +61,7 @@ function if7() {
     }
     opchecker = true;
     var inner = parseFloat(display);
-    if (inner == 0) {
+    if (inner == 0  && display.indexOf('.')<0) {
         document.getElementById("answer").innerHTML = '7';
         display='7';
     }
@@ -78,7 +78,7 @@ function if6() {
     }
     opchecker = true;
     var inner = parseFloat(display);
-    if (inner == 0) {
+    if (inner == 0  && display.indexOf('.')<0) {
         document.getElementById("answer").innerHTML = '6';
         display='6';
     }
@@ -95,7 +95,7 @@ function if5() {
     }
     opchecker = true;
     var inner = parseFloat(display);
-    if (inner == 0) {
+    if (inner == 0  && display.indexOf('.')<0) {
         document.getElementById("answer").innerHTML = '5';
         display='5';
     }
@@ -112,7 +112,7 @@ function if4() {
     }
     opchecker = true;
     var inner = parseFloat(display);
-    if (inner == 0) {
+    if (inner == 0  && display.indexOf('.')<0) {
         document.getElementById("answer").innerHTML = '4';
         display='4';
     }
@@ -129,7 +129,7 @@ function if3() {
     }
     opchecker = true;
     var inner = parseFloat(display);
-    if (inner === 0) {
+    if (inner === 0  && display.indexOf('.')<0) {
         document.getElementById("answer").innerHTML = '3';
         display='3';
 
@@ -147,7 +147,7 @@ function if2() {
     }
     opchecker = true;
     var inner = parseFloat(display);
-    if (inner == 0) {
+    if (inner == 0  && display.indexOf('.')<0) {
         document.getElementById("answer").innerHTML = '2';
         display='2';
 
@@ -165,7 +165,7 @@ function if1() {
     }
     opchecker = true;
     var inner = parseFloat(display);
-    if (inner == 0) {
+    if (inner == 0  && display.indexOf('.')<0) {
         document.getElementById("answer").innerHTML = '1';
         display='1';
 
@@ -183,7 +183,7 @@ function if0() {
     }
     opchecker = true;
     var inner = parseFloat(display);
-    if (inner == 0) {
+    if (inner == 0  && display.indexOf('.')<0) {
         document.getElementById("answer").innerHTML = '0';
         display='0';
 
@@ -194,13 +194,14 @@ function if0() {
     }
 }
 function ifdec() {
+    console.log(display.indexOf('.'));
     var inner = parseFloat(display);
     //updated to account for adding two numbers with decimals and decimal counter not always being reset (this way seems easier than a bunch of if statements)
-    if (display.indexOf('.')<1) {
+    if (display.indexOf('.')<0 || display == '') {
     //if (decimalAdded == false) {
         display += '.';
+        console.log(display);
         document.getElementById("answer").innerHTML = display;
-        decimalAdded = true;
         }
     
 
