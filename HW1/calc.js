@@ -1,5 +1,5 @@
 var display = '';
-var decimalAdded = false;
+//var decimalAdded = false; retired
 var negative = 0;
 var theop = '';
 var first = '';
@@ -195,8 +195,9 @@ function if0() {
 }
 function ifdec() {
     var inner = parseFloat(display);
-
-    if (decimalAdded == false) {
+    //updated to account for adding two numbers with decimals and decimal counter not always being reset (this way seems easier than a bunch of if statements)
+    if (display.indexOf('.')<1) {
+    //if (decimalAdded == false) {
         display += '.';
         document.getElementById("answer").innerHTML = display;
         decimalAdded = true;
@@ -223,6 +224,7 @@ function ifneg() {
     }
  
 }
+var lastnum = 0;
 function ifadd() {
     document.getElementById("answer").innerHTML = display;
     opchecker = false;
@@ -326,47 +328,65 @@ function ifequal() {
     if (myop == 1) {
         if (newfirst && newsecond) {
             var returnv=newfirst + newsecond;
+            lastnum = newsecond;
         }
         else if (newfirst) {
             returnv = newfirst + newfirst;
+            lastnum = newfirst;
+        }
+        else {
+            returnv= inner+lastnum;
         }
     }
      if (myop == 2) {
         if (newfirst && newsecond) {
             var returnv=newfirst * newsecond;
+            lastnum = newsecond;
+
         }
         else if (newfirst) {
             returnv = newfirst * newfirst;
+            lastnum=newfirst
+        }
+         else {
+            returnv= inner*lastnum;
         }
     }
     if (myop == 3) {
         if (newfirst && newsecond) {
             var returnv=newfirst - newsecond;
+            lastnum = newsecond;
+
         }
         else if (newfirst) {
             returnv = newfirst - newfirst;
+            lastnum=newfirst
+
+        }
+        else {
+            returnv= inner-lastnum;
         }
     }
      if (myop == 4) {
         if (newfirst && newsecond) {
-            
-           
-                var returnv=newfirst / newsecond;
-
-            
+            lastnum = newsecond;
+            var returnv=newfirst / newsecond;
         }
-        else if (newfirst) {
+        else if (newfirst || newfirst == 0) {
             if (newsecond == 0) {
                 zerocheck = 0;
             }
+
             
-            else if (newfirst == 0) {
-                returnv = 'NAN'
-            }
             else {
                 var returnv=newfirst / newfirst;
-        }
+                lastnum=newfirst
+
+        }   
     }
+         else {
+             returnv = inner/lastnum;
+         }
      }
     console.log("error check " + zerocheck);
         if (zerocheck == 0) {
