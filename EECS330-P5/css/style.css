@@ -1,0 +1,19 @@
+* {
+  font-family: Arial;
+}
+
+body {
+  background-image: url('../Images/img.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+table {
+  color: #0ADA41;
+  width: 75%
+}
+
+button {
+  margin-left: 30%;
+  width: 20%;
+}
