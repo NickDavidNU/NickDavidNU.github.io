@@ -19,7 +19,7 @@ var cell4 = row.insertCell(3);
 
         var element1 = document.createElement('input');
         element1.type="text";
-        element1.textAlign="center";
+        cell1.ALIGN="center";
         cell1.appendChild(element1);
          var element2 = document.createElement('input');
         element2.type="number";

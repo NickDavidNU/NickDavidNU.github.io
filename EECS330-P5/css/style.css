@@ -9,8 +9,13 @@ body {
   background-position: center center;
 }
 table {
-  color: #0ADA41;
+  color: #033FF1;
   width: 75%
+}
+
+td {
+    text-align: center; /* center checkbox horizontally */
+    vertical-align: middle; /* center checkbox vertically */
 }
 
 button {
