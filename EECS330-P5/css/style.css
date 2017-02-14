@@ -9,7 +9,7 @@ body {
   background-position: center center;
 }
 table {
-  color: #033FF1;
+  color: #000000 ;
   width: 75%
 }
 
@@ -19,6 +19,6 @@ td {
 }
 
 button {
-  margin-left: 30%;
+  margin-left: 0;
   width: 20%;
 }
