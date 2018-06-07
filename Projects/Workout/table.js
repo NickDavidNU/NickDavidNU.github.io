@@ -1,54 +1,181 @@
 
+$(document).ready(function(){
+  document.getElementById("monthlybutton").style.color = "#477eed";
+  document.getElementById("weeklybutton").style.color = "#FFFFFF";
+});
+
+
+var row_count = 1;
+var selected = "Bicep Curls";
+
+var weekly_data = [['Day', 'Reps', 'Weight'],
+['2/26/17',  10, 20],
+['2/27/17',  15, 25],
+['2/28/17',  17, 35],
+['3/1/17',  20, 40],
+['3/2/17',  22, 65],
+['3/3/17',  25, 68],
+['3/4/17',  30, 70]];
+
+var monthly_data = [['Month', 'Reps', 'Weight'],
+['October',  100, 20],
+['November',  105, 25],
+['December',  107, 35],
+['January',  200, 40],
+['February',  210, 65],
+['March',  30, 65]];
+
+var data = monthly_data;
+var monthly = true;
+
+function downloadCSV(){
+  window.open('data/user_workout_data_export.csv');
+}
+
+function change_weekly() {
+  data = weekly_data;
+  drawChart();
+  document.getElementById("weeklybutton").style.color = "#477eed";
+  document.getElementById("monthlybutton").style.color = "#fff";
+  monthly = false;
+}
+
+function change_monthly() {
+  data = monthly_data;
+  drawChart();
+  document.getElementById("monthlybutton").style.color = "#477eed";
+  document.getElementById("weeklybutton").style.color = "#fff";
+  monthly = true;
+}
+
+function Alert_first_row() {
+    window.alert("You must have at least one row");
+}
+
+function clearRows(){
+  while (row_count > 0){
+    DeleteRowAtIndex(1);
+    row_count--;
+  }
+  makenewrow();
+  row_count = 1;
+}
+
+function DeleteRowAtIndex(i){
+  document.getElementById("firsttable").deleteRow(i);
+}
+
+function Delete_row_f(btn) {
+   if(row_count > 1) {
+        var i = btn.parentNode.parentNode.rowIndex;
+        document.getElementById("firsttable").deleteRow(i);
+        row_count--;
+   } else {
+     Alert_first_row();
+   }
+}
+
 function makenewrow() {
+  row_count += 1;
+
+  //Using jQuery instead
+
+  $("#firsttable").append("<tr align='center'><td><input type='text' name='name1'></input></td><td><input type='number' name='set1' min='0'></input></td><td><input  type='number' name='weight1' min='0'></input></td><td><input type='number' name='rep1' min='0'></input></td><td><button onclick='Delete_row_f(this)'>X</button></td></tr>");
+
+}
 
 
-// Find a <table> element with id="myTable":
-var table = document.getElementById("firsttable");
+function optionClicked(i){
+  if (i == 1){
+    selected = "Bicep Curls";
+    weekly_data = [['Day', 'Reps', 'Weight'],
+    ['2/26/17',  10, 20],
+    ['2/27/17',  15, 25],
+    ['2/28/17',  17, 35],
+    ['3/1/17',  20, 40],
+    ['3/2/17',  22, 65],
+    ['3/3/17',  25, 68],
+    ['3/4/17',  30, 70]];
+    monthly_data = [['Month', 'Reps', 'Avg. Weight'],
+    ['October',  100, 20],
+    ['November',  105, 25],
+    ['December',  107, 35],
+    ['January',  200, 40],
+    ['February',  210, 65],
+    ['March',  30, 65]];
 
-// Create an empty <tr> element and add it to the 1st position of the table:
-var row = table.insertRow(-1);
+  } else if (i == 2){
+    selected = "Squats";
+    weekly_data = [['Day', 'Reps', 'Weight'],
+    ['2/26/17',  20, 70],
+    ['2/27/17',  15, 75],
+    ['2/28/17',  17, 75],
+    ['3/1/17',  25, 70],
+    ['3/2/17',  25, 75],
+    ['3/3/17',  30, 78],
+    ['3/4/17',  30, 80]]
+    monthly_data = [['Month', 'Reps', 'Avg. Weight'],
+    ['October',  140, 225],
+    ['November',  140, 245],
+    ['December',  145, 245],
+    ['January',  155, 250],
+    ['February',  150, 255],
+    ['March',  45, 285]];
 
-// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-var cell1 = row.insertCell(0);
-var cell2 = row.insertCell(1);
-var cell3 = row.insertCell(2);
-var cell4 = row.insertCell(3);
+  } else {
+    selected = "Deadlifts";
+    weekly_data = [['Day', 'Reps', 'Weight'],
+    ['2/26/17',  20, 100],
+    ['2/27/17',  25, 125],
+    ['2/28/17',  35, 135],
+    ['3/1/17',  35, 140],
+    ['3/2/17',  40, 145],
+    ['3/3/17',  40, 147],
+    ['3/4/17',  45, 149]];
+    monthly_data = [['Month', 'Reps', 'Avg. Weight'],
+    ['October',  200, 100],
+    ['November',  230, 125],
+    ['December',  247, 135],
+    ['January',  253, 140],
+    ['February',  255, 145],
+    ['March', 100, 150]];
 
+  }
 
-// Add some text to the new cells:
+  if (monthly){
+    data = monthly_data;
+  } else {
+    data = weekly_data;
 
-        var element1 = document.createElement('input');
-        element1.type="text";
-        cell1.ALIGN="center";
-        cell1.appendChild(element1);
-         var element2 = document.createElement('input');
-        element2.type="number";
-        element2.min="0";
-        cell2.appendChild(element2);
-        var element3 = document.createElement('input');
-        element3.type="number";
-        element3.min="0";
-        cell3.appendChild(element3);
-        var element4 = document.createElement('input');
-        element4.type="number";
-        element4.min="0";
-        cell4.appendChild(element4);
+  }
 
+  drawChart();
+  document.getElementById("buttontitle").innerHTML = selected;
+}
 
+function dropDownClicked() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
 }
 
 google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-              ['Month', 'Reps', 'Weight'],
-          ['October',  10,      20],
-          ['November',  15,      25],
-          ['December',  17,       35],
-          ['Janruary',  20,      40],
-            ['February',  30,      65]
-        ]);
+        var ddata = google.visualization.arrayToDataTable(data);
 
         var options = {
           title: 'My Workout Performance',
@@ -61,5 +188,5 @@ google.charts.load('current', {'packages':['corechart']});
 
         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
-        chart.draw(data, options);
+        chart.draw(ddata, options);
       }
