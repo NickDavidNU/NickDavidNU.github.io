@@ -1,0 +1,66 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.table-nonfluid {
+   width: auto !important;
+}
+
+li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+    font-size: 120%;
+}
+
+
+li a:hover {
+    background-color: #111;
+    text-decoration: none;
+    color: white;
+}
+
+#pastdiv {
+  background-color: #F4F4F4;
+}
+
+h1 {
+  font-size: 110%;
+}
+
+* {
+  font-family: Arial;
+  font-size: 101%;
+}
+button {
+
+  white-space: pre-wrap;
+  border: 5px;
+  border-width: thin;
+  border-style: solid;
+  width: 50%;
+  height: 60px;
+
+}
+
+body {
+  background-color: #E5E5E5;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
