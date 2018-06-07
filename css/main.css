@@ -21,6 +21,8 @@ img {
 }
 
 h3 {
+    font-size: 1.55em;
+
   margin: 0 0 1em 0;
 }
 
@@ -125,18 +127,18 @@ Page: Portfolio
   color: #bdc3c7;
 }
 
-
-
-/**********************************************
-Page: About
-***********************************************/
-
 .profile-photo {
   display: block;
   max-width: 150px;
   margin: 0 auto 30px;
   border-radius: 100%;
 }
+
+/**********************************************
+Page: Project
+***********************************************/
+
+
 
 /**********************************************
 Page: Contact
@@ -158,15 +160,21 @@ Page: Contact
 }
 
 .contact-info li.phone a {
-  background-image: url('../images/phone.png');
+  background-image: url('../media/phone.png');
 }
 
 .contact-info li.mail a {
-  background-image: url('../images/mail.png');
+  background-image: url('../media/mail.png');
 }
 
 .contact-info li.twitter a {
-  background-image: url('../images/twitter.png');
+  background-image: url('../media/twitter.png');
+}
+.contact-info li.linkedin a {
+  background-image: url('../media/linkedin.png');
+}
+.contact-info li.github a {
+  background-image: url('../media/gh.jpeg');
 }
 
 
